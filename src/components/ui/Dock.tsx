@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, MotionValue, SpringOptions } from 'motion/react';
 import { Children, cloneElement, useEffect, useMemo, useRef, useState, ReactElement, ReactNode } from 'react';
 
+import GlassSurface from './GlassSurface';
 import './Dock.css';
 
 interface DockItemProps {
@@ -123,15 +124,16 @@ interface DockProps {
     baseItemSize?: number;
 }
 
+
 export default function Dock({
     items,
     className = '',
     spring = { mass: 0.1, stiffness: 150, damping: 12 },
-    magnification = 70,
+    magnification = 28,
     distance = 200,
-    panelHeight = 68,
-    dockHeight = 256,
-    baseItemSize = 50
+    panelHeight = 34,
+    dockHeight = 100,
+    baseItemSize = 22
 }: DockProps) {
     const mouseX = useMotionValue(Infinity);
     const isHovered = useMotionValue(0);
@@ -140,41 +142,51 @@ export default function Dock({
         () => Math.max(dockHeight, magnification + magnification / 2 + 4),
         [magnification, dockHeight]
     );
-    const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
+    const heightRow = useTransform(isHovered, [0, 1], [panelHeight, panelHeight + 2]); // Ultra-subtle growth
     const height = useSpring(heightRow, spring);
 
     return (
-        <motion.div style={{ height, scrollbarWidth: 'none' }} className="dock-outer">
-            <motion.div
-                onMouseMove={({ pageX }) => {
-                    isHovered.set(1);
-                    mouseX.set(pageX);
-                }}
-                onMouseLeave={() => {
-                    isHovered.set(0);
-                    mouseX.set(Infinity);
-                }}
+        <motion.div style={{ height: maxHeight, scrollbarWidth: 'none' }} className="dock-outer">
+            <GlassSurface
+                borderRadius={17}
+                borderWidth={0}
+                blur={20}
+                opacity={0.9}
+                backgroundOpacity={0.12}
+                distortionScale={-150}
                 className={`dock-panel ${className}`}
-                style={{ height: panelHeight }}
-                role="toolbar"
-                aria-label="Application dock"
+                style={{ height: height }}
             >
-                {items.map((item, index) => (
-                    <DockItem
-                        key={index}
-                        onClick={item.onClick}
-                        className={item.className}
-                        mouseX={mouseX}
-                        spring={spring}
-                        distance={distance}
-                        magnification={magnification}
-                        baseItemSize={baseItemSize}
-                    >
-                        <DockIcon>{item.icon}</DockIcon>
-                        <DockLabel>{item.label}</DockLabel>
-                    </DockItem>
-                ))}
-            </motion.div>
+                <motion.div
+                    onMouseMove={({ pageX }) => {
+                        isHovered.set(1);
+                        mouseX.set(pageX);
+                    }}
+                    onMouseLeave={() => {
+                        isHovered.set(0);
+                        mouseX.set(Infinity);
+                    }}
+                    className="dock-panel__content"
+                    role="toolbar"
+                    aria-label="Application dock"
+                >
+                    {items.map((item, index) => (
+                        <DockItem
+                            key={index}
+                            onClick={item.onClick}
+                            className={item.className}
+                            mouseX={mouseX}
+                            spring={spring}
+                            distance={distance}
+                            magnification={magnification}
+                            baseItemSize={baseItemSize}
+                        >
+                            <DockIcon>{item.icon}</DockIcon>
+                            <DockLabel>{item.label}</DockLabel>
+                        </DockItem>
+                    ))}
+                </motion.div>
+            </GlassSurface>
         </motion.div>
     );
 }

@@ -9,26 +9,26 @@ export default function MobileDock() {
 
     const items = [
         {
-            icon: <Home size={22} />,
+            icon: <Home size={16} />,
             label: 'Home',
             onClick: () => router.push('/'),
         },
         {
-            icon: <Info size={22} />,
+            icon: <Info size={16} />,
             label: 'About',
             onClick: () => router.push('/about'),
         },
         {
-            icon: <CalendarDays size={22} />,
+            icon: <CalendarDays size={16} />,
             label: 'My Reservations',
             onClick: () => router.push('/dashboard'),
         },
         {
-            icon: <Utensils size={22} />,
+            icon: <Utensils size={16} />,
             label: 'Reserve Now',
             onClick: () => router.push('/reserve'),
         },
     ];
 
-    return <Dock items={items} magnification={70} distance={150} panelHeight={64} baseItemSize={48} />;
+    return <Dock items={items} />;
 }
