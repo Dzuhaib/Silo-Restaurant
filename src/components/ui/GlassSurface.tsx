@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef, useId, CSSProperties, ReactNode } from 'react';
+import { useEffect, useState, useRef, useId, ReactNode } from 'react';
+import { motion, HTMLMotionProps } from 'motion/react';
 import './GlassSurface.css';
 
 interface GlassSurfaceProps {
@@ -23,7 +24,7 @@ interface GlassSurfaceProps {
     yChannel?: 'R' | 'G' | 'B' | 'A';
     mixBlendMode?: 'normal' | 'multiply' | 'screen' | 'overlay' | 'darken' | 'lighten' | 'color-dodge' | 'color-burn' | 'hard-light' | 'soft-light' | 'difference' | 'exclusion' | 'hue' | 'saturation' | 'color' | 'luminosity' | string;
     className?: string;
-    style?: CSSProperties;
+    style?: HTMLMotionProps<'div'>['style'];
 }
 
 const GlassSurface = ({
@@ -184,7 +185,7 @@ const GlassSurface = ({
     };
 
     return (
-        <div
+        <motion.div
             ref={containerRef}
             className={`glass-surface ${mounted && svgSupported ? 'glass-surface--svg' : 'glass-surface--fallback'} ${className}`}
             style={containerStyle}
@@ -240,7 +241,7 @@ const GlassSurface = ({
             </svg>
 
             <div className="glass-surface__content">{children}</div>
-        </div>
+        </motion.div>
     );
 };
 
