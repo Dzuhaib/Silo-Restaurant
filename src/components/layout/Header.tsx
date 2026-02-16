@@ -8,7 +8,6 @@ import GlassSurface from "../ui/GlassSurface";
 import styles from "./Header.module.css";
 
 export default function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
 
     const isActive = (path: string) => pathname === path;
@@ -29,25 +28,11 @@ export default function Header() {
                         Silo<span>.</span>
                     </Link>
 
-                    <button
-                        className={styles.header__hamburger}
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <span className={styles.header__hamburger__line} />
-                        <span className={styles.header__hamburger__line} />
-                        <span className={styles.header__hamburger__line} />
-                    </button>
-
-                    <nav
-                        className={`${styles.header__nav} ${isMenuOpen ? styles["header__nav--open"] : ""
-                            }`}
-                    >
+                    <nav className={styles.header__nav}>
                         <Link
                             href="/"
                             className={`${styles.header__link} ${isActive("/") ? styles["header__link--active"] : ""
                                 }`}
-                            onClick={() => setIsMenuOpen(false)}
                         >
                             Home
                         </Link>
@@ -55,7 +40,6 @@ export default function Header() {
                             href="/about"
                             className={`${styles.header__link} ${isActive("/about") ? styles["header__link--active"] : ""
                                 }`}
-                            onClick={() => setIsMenuOpen(false)}
                         >
                             About
                         </Link>
@@ -63,11 +47,10 @@ export default function Header() {
                             href="/dashboard"
                             className={`${styles.header__link} ${isActive("/dashboard") ? styles["header__link--active"] : ""
                                 }`}
-                            onClick={() => setIsMenuOpen(false)}
                         >
                             My Reservations
                         </Link>
-                        <Link href="/reserve" onClick={() => setIsMenuOpen(false)}>
+                        <Link href="/reserve">
                             <GlassButton variant="accent">Reserve</GlassButton>
                         </Link>
                     </nav>

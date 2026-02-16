@@ -97,6 +97,7 @@
     .header__container {
         padding: 12px 20px;
         min-height: 70px;
+        justify-content: center;
     }
 
     .header__nav {
@@ -129,6 +130,6 @@
     }
 
     .header__hamburger {
-        display: flex;
+        display: none;
     }
 }

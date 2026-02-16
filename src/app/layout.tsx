@@ -3,6 +3,7 @@ import { Playfair_Display, Outfit, Italiana } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileDock from "@/components/layout/MobileDock";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <MobileDock />
       </body>
     </html>
   );

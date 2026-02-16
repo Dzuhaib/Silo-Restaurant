@@ -54,6 +54,7 @@ const GlassSurface = ({
     const blueGradId = `blue-grad-${uniqueId}`;
 
     const [svgSupported, setSvgSupported] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const feImageRef = useRef<SVGFEImageElement>(null);
@@ -95,6 +96,12 @@ const GlassSurface = ({
     };
 
     useEffect(() => {
+        setMounted(true);
+        setSvgSupported(supportsSVGFilters());
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
         updateDisplacementMap();
         [
             { ref: redChannelRef, offset: redOffset },
@@ -110,6 +117,7 @@ const GlassSurface = ({
 
         gaussianBlurRef.current?.setAttribute('stdDeviation', displace.toString());
     }, [
+        mounted,
         width,
         height,
         borderRadius,
@@ -128,7 +136,7 @@ const GlassSurface = ({
     ]);
 
     useEffect(() => {
-        if (!containerRef.current) return;
+        if (!mounted || !containerRef.current) return;
 
         const resizeObserver = new ResizeObserver(() => {
             setTimeout(updateDisplacementMap, 0);
@@ -139,15 +147,13 @@ const GlassSurface = ({
         return () => {
             resizeObserver.disconnect();
         };
-    }, []);
+    }, [mounted]);
 
     useEffect(() => {
-        setSvgSupported(supportsSVGFilters());
-    }, []);
-
-    useEffect(() => {
-        setTimeout(updateDisplacementMap, 0);
-    }, [width, height]);
+        if (mounted) {
+            setTimeout(updateDisplacementMap, 0);
+        }
+    }, [mounted, width, height]);
 
     const supportsSVGFilters = () => {
         if (typeof window === 'undefined' || typeof document === 'undefined') {
@@ -172,15 +178,15 @@ const GlassSurface = ({
         width: typeof width === 'number' ? `${width}px` : width,
         height: typeof height === 'number' ? `${height}px` : height,
         borderRadius: `${borderRadius}px`,
-        '--glass-frost': backgroundOpacity,
-        '--glass-saturation': saturation,
-        '--filter-id': `url(#${filterId})`
+        '--glass-frost': backgroundOpacity.toString(),
+        '--glass-saturation': saturation.toString(),
+        '--filter-id': mounted ? `url(#${filterId})` : 'none'
     };
 
     return (
         <div
             ref={containerRef}
-            className={`glass-surface ${svgSupported ? 'glass-surface--svg' : 'glass-surface--fallback'} ${className}`}
+            className={`glass-surface ${mounted && svgSupported ? 'glass-surface--svg' : 'glass-surface--fallback'} ${className}`}
             style={containerStyle}
         >
             <svg className="glass-surface__filter" xmlns="http://www.w3.org/2000/svg">
