@@ -129,26 +129,26 @@ export default function Dock({
     items,
     className = '',
     spring = { mass: 0.1, stiffness: 150, damping: 12 },
-    magnification = 28,
+    magnification = 70,
     distance = 200,
-    panelHeight = 34,
-    dockHeight = 100,
-    baseItemSize = 22
+    panelHeight = 68,
+    dockHeight = 256,
+    baseItemSize = 50
 }: DockProps) {
     const mouseX = useMotionValue(Infinity);
     const isHovered = useMotionValue(0);
 
     const maxHeight = useMemo(
-        () => Math.max(dockHeight, magnification + magnification / 2 + 4),
+        () => Math.max(dockHeight, magnification + magnification / 2 + 8),
         [magnification, dockHeight]
     );
-    const heightRow = useTransform(isHovered, [0, 1], [panelHeight, panelHeight + 2]); // Ultra-subtle growth
+    const heightRow = useTransform(isHovered, [0, 1], [panelHeight, panelHeight + 8]); // Standard growth
     const height = useSpring(heightRow, spring);
 
     return (
         <motion.div style={{ height: maxHeight, scrollbarWidth: 'none' }} className="dock-outer">
             <GlassSurface
-                borderRadius={17}
+                borderRadius={16}
                 borderWidth={0}
                 blur={20}
                 opacity={0.9}

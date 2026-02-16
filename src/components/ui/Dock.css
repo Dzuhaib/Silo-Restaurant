@@ -13,7 +13,7 @@
 
 .dock-panel {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: fit-content !important;
@@ -22,10 +22,10 @@
 
 .dock-panel__content {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     /* Center items vertically */
-    gap: 14px;
-    padding: 0 20px;
+    gap: 16px;
+    padding: 0 8px 8px;
     height: 100%;
 }
 
@@ -34,9 +34,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     outline: none;
@@ -44,7 +44,7 @@
 }
 
 .dock-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .dock-icon {

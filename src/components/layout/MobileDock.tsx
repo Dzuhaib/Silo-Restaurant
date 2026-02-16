@@ -9,22 +9,22 @@ export default function MobileDock() {
 
     const items = [
         {
-            icon: <Home size={16} />,
+            icon: <Home size={24} />,
             label: 'Home',
             onClick: () => router.push('/'),
         },
         {
-            icon: <Info size={16} />,
+            icon: <Info size={24} />,
             label: 'About',
             onClick: () => router.push('/about'),
         },
         {
-            icon: <CalendarDays size={16} />,
+            icon: <CalendarDays size={24} />,
             label: 'My Reservations',
             onClick: () => router.push('/dashboard'),
         },
         {
-            icon: <Utensils size={16} />,
+            icon: <Utensils size={24} />,
             label: 'Reserve Now',
             onClick: () => router.push('/reserve'),
         },
