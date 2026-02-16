@@ -1,0 +1,126 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 32px;
+    background: rgba(26, 31, 46, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-family: var(--font-display), 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.header__logo span {
+    color: var(--primary);
+}
+
+.header__nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.header__link {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.header__link:hover {
+    color: var(--text-primary);
+}
+
+.header__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.header__link:hover::after {
+    width: 100%;
+}
+
+.header__link--active {
+    color: var(--primary);
+}
+
+/* Mobile hamburger */
+.header__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.header__hamburger__line {
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 16px 20px;
+    }
+
+    .header__nav {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--glass-blur-strong));
+        border-bottom: 1px solid var(--glass-border);
+        padding: 24px;
+    }
+
+    .header__nav--open {
+        display: flex;
+    }
+
+    .header__link {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .header__link:last-child {
+        border-bottom: none;
+    }
+
+    .header__hamburger {
+        display: flex;
+    }
+}

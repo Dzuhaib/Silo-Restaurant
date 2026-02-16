@@ -1,0 +1,339 @@
+.dashboard {
+    min-height: 100vh;
+    padding: 140px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Glows */
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -10%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.dashboard::after {
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    right: -5%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.dashboardHeader {
+    margin-bottom: 64px;
+    text-align: left;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 16px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Lookup Form Styling */
+.lookupSection {
+    margin-bottom: 80px;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.lookupForm {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    gap: 24px;
+    align-items: flex-end;
+    padding: 12px;
+}
+
+.orDivider {
+    padding-bottom: 22px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.lookupBtnWrapper {
+    padding-bottom: 10px;
+}
+
+/* Results Section */
+.resultsSection {
+    animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.sectionHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.sectionLine {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--glass-border), transparent);
+}
+
+.reservationsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+}
+
+/* Premium Card Enhancements */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confCodeWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.confLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.confCode {
+    font-family: inherit;
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Elegant Status Badges */
+.status {
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.status_pending {
+    background: rgba(212, 175, 55, 0.08);
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.status_confirmed {
+    background: rgba(16, 185, 129, 0.08);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.05);
+}
+
+.status_cancelled {
+    background: rgba(239, 68, 68, 0.08);
+    color: #EF4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.mainInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.infoLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.infoValue {
+    font-size: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.infoIcon {
+    width: 14px;
+    height: 14px;
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+.guestSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.guestPrimary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.guestName {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.guestPhone {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.cancelBtn {
+    font-size: 0.75rem !important;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+    opacity: 1;
+    color: #EF4444 !important;
+    background: rgba(239, 68, 68, 0.05) !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 100px 0;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.emptyIcon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.2;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .reservationsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .lookupForm {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .orDivider {
+        text-align: center;
+        padding: 0;
+    }
+
+    .dashboardHeader {
+        text-align: center;
+    }
+
+    .subtitle {
+        margin: 0 auto;
+    }
+
+    .mainInfo {
+        grid-template-columns: 1fr;
+    }
+}

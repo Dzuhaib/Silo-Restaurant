@@ -1,0 +1,119 @@
+.footer {
+    background: rgba(26, 31, 46, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 32px 32px;
+    margin-top: 80px;
+}
+
+.footer__container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer__section h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer__section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__link {
+    margin-bottom: 12px;
+}
+
+.footer__link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-block;
+}
+
+.footer__link a:hover {
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+.footer__social {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.footer__social__link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: all 0.3s;
+}
+
+.footer__social__link:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.footer__social__link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer__bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer__bottom p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer__logo {
+    font-family: var(--font-display), 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.footer__logo span {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px 24px;
+    }
+
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}

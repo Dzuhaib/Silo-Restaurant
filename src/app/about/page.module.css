@@ -1,0 +1,219 @@
+/* Main Container */
+.about {
+    min-height: 100vh;
+    padding: 120px 24px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 16px;
+    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Story Section */
+.story {
+    margin-bottom: 60px;
+}
+
+.storyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.storyImage {
+    position: relative;
+    height: 450px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.storyText h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.storyText p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.storyText p:last-child {
+    margin-bottom: 0;
+}
+
+/* Info Grid - 3 Equal Columns */
+.infoGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+/* Ensure GlassCard children don't break grid */
+.infoGrid>* {
+    min-width: 0;
+}
+
+/* Card Styling */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.cardHeader h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin: 0;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Hours List */
+.hoursList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hoursRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.day {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.time {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Social Links */
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    transform: translateX(6px);
+}
+
+.socialIcon {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Location */
+.location {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 968px) {
+    .about {
+        padding: 100px 20px 40px;
+    }
+
+    .storyGrid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .storyImage {
+        height: 350px;
+    }
+
+    .hoursRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
