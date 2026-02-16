@@ -13,7 +13,7 @@
 }
 
 .title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.5rem, 8vw, 4rem);
     margin-bottom: 16px;
     background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
     -webkit-background-clip: text;
@@ -22,7 +22,7 @@
 }
 
 .subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 3vw, 1.5rem);
     color: var(--text-secondary);
     font-weight: 300;
 }
@@ -67,8 +67,8 @@
 
 /* Info Grid - 3 Equal Columns */
 .infoGrid {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
     margin-bottom: 60px;
     width: 100%;
@@ -191,15 +191,19 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .infoGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 968px) {
+@media (max-width: 768px) {
     .about {
         padding: 100px 20px 40px;
+    }
+
+    .header {
+        margin-bottom: 40px;
     }
 
     .storyGrid {
@@ -208,12 +212,44 @@
     }
 
     .storyImage {
-        height: 350px;
+        height: 300px;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card {
+        gap: 16px;
+    }
+
+    .hoursRow {
+        flex-direction: row; /* Keep row for 768px if possible, or adjust to column if still tight */
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 80px 16px 32px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .storyImage {
+        height: 250px;
     }
 
     .hoursRow {
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
+    }
+
+    .socialLink {
+        padding: 12px 14px;
     }
 }
